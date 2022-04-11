@@ -1,6 +1,8 @@
 # Unpipelined-MIPS-Processor
 Intro to Computer Architecture Final Project
 
+written in c++
+
 main
 - runs all the functions
 - keep on a while loop until user stops the program
