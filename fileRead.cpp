@@ -1,3 +1,5 @@
+// This function made by Kyle Ramsey
+
 int fileRead(string filename){
     
     string line;    // holds read in line
