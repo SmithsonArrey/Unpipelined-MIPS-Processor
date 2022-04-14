@@ -3,7 +3,7 @@ Intro to Computer Architecture Final Project
 
 written in c++
 
-main
+main - Jorge 
 - runs all the functions
 - keep on a while loop until user stops the program
 
@@ -12,7 +12,7 @@ file management function
 *  -read a line and look for keywords
 *  -use string libraries
 *  
-*  output file upload -
+*  output file upload - Caleb 
 *   -cycle numbers?
 
 
