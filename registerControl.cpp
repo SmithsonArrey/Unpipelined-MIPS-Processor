@@ -37,7 +37,7 @@ registerType register_block[NUMREGISTERS];
 
 
 
-void Init_Registers(void) {
+void Build_Registers(void) {
     register_block[0].name = "zero";
     register_block[0].usage = "Constant 0";
     register_block[0].data = 0;
@@ -168,6 +168,29 @@ void Init_Registers(void) {
 
 }
 
+////
+
+// allows a register to be initialized to a value at the start of the program
+void Set_Register(int32_t regNum, int32_t data) {
+    register_block[regNum].data = data;
+}
+
+// WIP - Given the string of registers from the input file initialize the register block
+void Init_RegisterBlock(string regString) {
+    //parse through the string of registers, collect register number and data 
+    bool stringactive = true;
+
+    while (stringactive) {
+        //look at each line 
+        int32 regNum = 0;
+        int32 regData = 0;
+
+        Set_Register(regNum, regData);
+        stringactive = false;
+    }
+}
+
+
 
 // problem originates with the source register. The target register modifies the source register. The result of the modification is stored in the destination register
 
@@ -191,7 +214,6 @@ void writeRegister(int32_t destRegNum, int32_t data) {
 //////
 
 
-
 ///// For use in data transfers functions
 
 //register to register data transfer
@@ -208,5 +230,14 @@ void lwFromRegister(destRegNum, srcRegNum){
 //vars: memorylocation sourceregister targetregister
 
 void lwFromMemory(destRegNum, srcRegNum) {
-    //register_block[destRegNum].data = register_block[srcRegNum].data;
+    int32_t target_address = register_block[srcRegNum].data;
+    //need to know how memory locations work in the simulation 
+    //register_block[destRegNum].data = lw(target_address);
+}
+
+void swToMemory(destRegNum, srcRegNum) {
+    int32_t target_address = register_block[destRegNum].data;
+    int32_t reg_data = register_block[srcRegNum].data;
+    //need to know how memory locations work in the simulation 
+    //sw(target_address, reg_data);
 }
