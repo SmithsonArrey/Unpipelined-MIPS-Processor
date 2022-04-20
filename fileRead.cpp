@@ -34,6 +34,7 @@ int fileRead(string filename){
             codeData = codeData.append(" ");
             inFile>>line;
         }
+        codeData = codeData.append(" ");
         //cout<<codeData<<endl;
     }
 
