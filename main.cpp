@@ -32,22 +32,22 @@ int main(int argc, char** argv) {
     //This part of the code checks if the user would like to run the program again
     char runAgain;
     bool notValid = true;
-	cout << "Do you want to run the simulation again? (Y/N): ";
+    cout << "Do you want to run the simulation again? (Y/N): ";
     cin >> runAgain;
-	cout << endl;
-	while (notValid == 1){
+    cout << endl;
+    while (notValid == 1){
         if (runAgain == 'Y'){
-            repeat = 1;
-			notValid = 0;
-        }
-		else if (runAgain == 'N'){
-			repeat = 0;
-			notValid = 0;
-		}
-		else{
-		    cout << "Invalid Input, please try agian. (Y/N): ";
-			cin >> runAgain;
-        }
+	    repeat = 1;
+	    notValid = 0;
+	}
+	else if (runAgain == 'N'){
+	    repeat = 0;
+	    notValid = 0;
+	}
+	else{
+	    cout << "Invalid Input, please try agian. (Y/N): ";
+	    cin >> runAgain;
+	}
     }
     
 }
