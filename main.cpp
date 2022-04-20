@@ -18,16 +18,14 @@ int main(int argc, char** argv) {
     bool running = true;
     while(running){
         
-    // collect input and output file
+    // collect input file
     cout<< "Enter the input file name" << endl;
     cin>> inputFile;
-      //cout << "Enter the output file name" << endl;
-      //cin >> outputFile;
-    fileRead(filename);
-        
-        //process code
 
-        //generate output line
+    fileRead(filename); // reads input file 
+	    
+    //process code
+    //generate output line
         
     //This part of the code checks if the user would like to run the program again
     char runAgain;
@@ -45,7 +43,7 @@ int main(int argc, char** argv) {
 	    notValid = 0;
 	}
 	else{
-	    cout << "Invalid Input, please try agian. (Y/N): ";
+	    cout << "Invalid Input, please try again. (Y/N): ";
 	    cin >> runAgain;
 	}
     }
