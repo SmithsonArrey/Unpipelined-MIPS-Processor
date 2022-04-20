@@ -11,6 +11,29 @@ string regData="";  // strings that hold read in of registers, memory, and code
 string memData="";
 string codeData="";
 
+//DATA DECODING - HELPER FUNCTIONS
+int strToInt(string number) {
+	int stringSize = number.size();
+	int returnVal = 0;
+	for (int i = 0; i < stringSize; i++)
+	{
+		returnVal += (number[i] - 48) * pow(10, (stringSize - i - 1));
+	}
+	return returnVal;
+}
+
+int binaryStrToInt(string number)
+{
+	int stringSize = number.size();
+	int returnVal = 0;
+	for (int i = 0; i < stringSize; i++)
+	{
+		returnVal += (number[i] - 48) * pow(2, (stringSize - i - 1));
+	}
+	return returnVal;
+}
+
+// MAIN FUNCTION
 int main(int argc, char** argv) {
     
     string inputFile, outputFile; // holds name of input and output files
