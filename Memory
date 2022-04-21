@@ -1,0 +1,73 @@
+// Matthew Van Houten
+
+// Memory
+
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <stdlib.h>
+#include <cstring>
+#include <cmath>
+#include <fstream>
+#include <sstream>
+using namespace std;
+
+#define MemSize 250 // this is the total size of the memory array as specified in the guidelines
+
+int Memnew(string memdata, int Memory[]);
+
+
+
+int main(){	// The commented things in this area are needed 
+	int Memory[MemSize];// need this, it initializes the memory array
+	int i;
+	for (i = 0; i<=249 ; i++) // need this for loop to set all values in memory array to 0
+		Memory[i] = 0;
+	
+	string memdata = "8 40 16 60 ";
+	cout<<memdata<<endl;
+	Memnew(memdata,Memory);
+	
+		for (i = 0; i<=249 ; i++)
+		cout << Memory[i] << endl;
+	
+	
+}
+
+int Memnew(string memdata, int Memory[]){		// Function for the initialization of the array to import memory data
+	int i = 0;									// create integer variable i for counting
+	string loc = "";							// loc stands for location, this string holds the location of data in the array
+	string hold = "";							// this string holds a single character that will be appended into either location or data
+	string data = "";							// this string exists to hold the data for the memory array
+	int LOC, DATA;								// integer varaibles for holding the location and data of the integer before assigning them to memory
+	 
+	while(memdata[i] != '\0'){					// while the input string has not reached its termination
+		while(memdata[i] != ' '){				// while the input string is not on a space
+			hold = memdata[i];					// assign the current character into the hold string
+			loc.append(hold);					// append the hold string to the location string
+			i= i+1;								// increment i by 1
+			hold = "";							// clear hold
+		}
+		i=i+1;									// increment i by 1
+		while(memdata[i] != ' '){				// while the input string is not on a space
+			hold = memdata[i];					// assign the current character of the input string to the hold string
+			data.append(hold);					// append the hold string to the end of the data string
+			i=i+1;								// increment i by 1
+			hold = "";							// clear hold
+		}
+		i=i+1;									// increment i by 1
+		
+		stringstream Loctrans(loc);
+		stringstream Datatrans(data);
+		Loctrans >> LOC;						// transfer string into a integer variable for location data
+		Datatrans >> DATA;						// transfer string into a integer variable for data of memory
+		loc = "";								// clear location string
+		data = "";								// clear data string
+		
+		Memory[LOC/4] = DATA;					// go to the memory location and assign the data value for that location
+		
+	}
+	
+	
+	return 0;
+}
