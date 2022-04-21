@@ -35,3 +35,17 @@ int main(int argc, char** argv) {
     }
     
 }
+
+
+
+
+//Fetch
+
+//Decode
+
+//Execute
+
+//Memory
+
+//Write Back
+

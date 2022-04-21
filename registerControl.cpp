@@ -7,7 +7,6 @@
 //32-bit registers
 //32 bits is 4 bytes
 //1 byte is 8 bits
-
 //references: lect 4 & 5 ppts
 
 #define NUMREGISTERS 32
@@ -33,9 +32,6 @@ registerType register_block[NUMREGISTERS];
 //#29 Stack Pointer
 //#30 Frame pointer
 //#31 Return address (used by function call)
-
-
-
 
 void Build_Registers(void) {
     register_block[0].name = "zero";
@@ -169,7 +165,6 @@ void Build_Registers(void) {
 }
 
 ////
-
 // allows a register to be initialized to a value at the start of the program
 void Set_Register(int32_t regNum, int32_t data) {
     register_block[regNum].data = data;
@@ -192,7 +187,8 @@ void Init_RegisterBlock(string regString) {
 
 
 
-// problem originates with the source register. The target register modifies the source register. The result of the modification is stored in the destination register
+// problem originates with the source register. The target register modifies the source register.
+// The result of the modification is stored in the destination register
 
 
 ///// For use in external arithmetic functions
