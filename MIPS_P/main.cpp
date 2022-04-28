@@ -1,4 +1,9 @@
 #include <iostream>
+#include <stdio.h>
+#include <string>
+#include <string.h>
+#include <vector>
+#include <fstream>
 #include "MIPS.h"
 #include "fileRead.h"
 
@@ -10,8 +15,7 @@ int main(){
 		cout << "Please enter the name of the input file: ";
 		//inputFile = "input.txt"; 
 		cin >> inputFile;
-		cout << "Please enter the name of the output file: " << endl;
-		//outputFile = "output.txt"; 
+		//cout << "Please enter the name of the output file: " << endl; 
 		//cin >> outputFile;
 
 		MIPS processor;
@@ -20,34 +24,44 @@ int main(){
 		fileRead(inputFile, &processor);
 
 		//MIPS
-		ofstream ols;
-		ols.open(outputFile);
 		codeNode* curCode;
 		curCode = processor.getCodeHead();
 		int linesExecuted = 1;
 		int instructionSubCount = 1;
 
+		ofstream output;
+		output.open("output.txt");
+
 		while (curCode != NULL) {
 			//FETCH
 			processor.Fetch(curCode);
-			cout << "C#" << instructionSubCount++ << " I" << linesExecuted << "-IF" << endl;
+			output << "C#" << instructionSubCount << " I" << linesExecuted << "-IF" << endl;
+			cout << "C#" << instructionSubCount << " I" << linesExecuted << "-IF" << endl;
+			instructionSubCount++;
 			//DECODE
 			processor.Decode();
-			cout << "C#" << instructionSubCount++ << " I" << linesExecuted << "-ID" << endl;
+			output << "C#" << instructionSubCount << " I" << linesExecuted << "-ID" << endl;
+			cout << "C#" << instructionSubCount << " I" << linesExecuted << "-ID" << endl;
+			instructionSubCount++;
 			//EXECUTE
 			processor.Execute(curCode);
-			cout << "C#" << instructionSubCount++ << " I" << linesExecuted << "-EX" << endl;
-
+			output << "C#" << instructionSubCount << " I" << linesExecuted << "-EX" << endl;
+			cout << "C#" << instructionSubCount << " I" << linesExecuted << "-EX" << endl;
+			instructionSubCount++;
 			//MEMORY ACCESS
 			if (processor.getDoMEM()) {
 				processor.memAccess();
-				cout << "C#" << instructionSubCount++ << " I" << linesExecuted << "-MEM" << endl;
+				output << "C#" << instructionSubCount << " I" << linesExecuted << "-MEM" << endl;
+				cout << "C#" << instructionSubCount << " I" << linesExecuted << "-MEM" << endl;
+				instructionSubCount++;
 			}
 
 			//WRITE BACK
 			if (processor.getDoWB()) {
 				processor.writeBack();
-				cout << "C#" << instructionSubCount++ << " I" << linesExecuted << "-WB" << endl;
+				output << "C#" << instructionSubCount << " I" << linesExecuted << "-WB" << endl;
+				cout << "C#" << instructionSubCount << " I" << linesExecuted << "-WB" << endl;
+				instructionSubCount++;
 			}
 
 			curCode = processor.getCodeHead();
@@ -55,8 +69,9 @@ int main(){
 			curCode = curCode->next;
 		}
 
-		processor.printRegisterList();
-		processor.printMemoryList();
+		processor.printRegisterList(output);
+		processor.printMemoryList(output);
+		output.close();
 
 		//This part of the code checks if the user would like to run the program again
 		char runAgain;
@@ -80,4 +95,3 @@ int main(){
 		}
 	}
 }
-

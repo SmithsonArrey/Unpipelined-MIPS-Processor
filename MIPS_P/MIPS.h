@@ -49,8 +49,8 @@ public:
 	void branchNotEqual(codeNode** curNode);
 
 	// Helper Functions
-	void printRegisterList();
-	void printMemoryList();
+	void printRegisterList(ofstream& ol);
+	void printMemoryList(ofstream& ol);
 	void printCodeList();
 	void appendRegisterNode(int regNum, int regData);
 	void appendMemoryNode(int memLocation, int memData);

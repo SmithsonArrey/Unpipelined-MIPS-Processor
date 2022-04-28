@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include <string>
 #include "MIPS.h"
@@ -223,23 +224,27 @@ void MIPS::writeBack() {
     }
 };
 
-void MIPS::printRegisterList() {
+void MIPS::printRegisterList(ofstream& ol) {
     registerNode* curNode;
     curNode = registerHead;
     sortRegisters(curNode);
+    ol << "REGISTERS" << endl;
     cout << "REGISTERS" << endl;
     while (curNode != NULL) {
         cout << "R" << curNode->registerNum << " " << curNode->registerData << endl;
+        ol << "R" << curNode->registerNum << " " << curNode->registerData << endl;
         curNode = curNode->next;
     }
 };
 
-void MIPS::printMemoryList() {
+void MIPS::printMemoryList(ofstream& ol) {
     memoryNode* curNode;
     curNode = memoryHead;
     sortMemory(curNode);
+    ol << "MEMORY" << endl;
     cout << "MEMORY" << endl;
     while (curNode != NULL) {
+        ol << curNode->memoryLocation << " " << curNode->memoryData << endl;
         cout << curNode->memoryLocation << " " << curNode->memoryData << endl;
         curNode = curNode->next;
     }
